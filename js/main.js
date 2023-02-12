@@ -5,12 +5,18 @@ if (localStorage.getItem("bookmarksList") !== null) {
   bookmarksList = JSON.parse(localStorage.getItem("bookmarksList"));
   displayBookmarks(bookmarksList);
 }
+
 document
   .querySelector("#addBookmarkBtn")
   .addEventListener("click", function () {
     getBookmarks();
   });
-function getBookmarks() {
+
+var validateN;
+var validateU;
+var checkOldNamesFlag;
+var checkOldUrlFlag;
+bookmarkName.addEventListener("blur", function () {
   if (validateName()) {
     validateN = true;
     document
@@ -20,17 +26,6 @@ function getBookmarks() {
     validateN = false;
     document
       .querySelector(".name-error p")
-      .classList.replace("d-none", "d-block");
-  }
-  if (validateUrl()) {
-    validateU = true;
-    document
-      .querySelector(".url-error p")
-      .classList.replace("d-block", "d-none");
-  } else {
-    validateU = false;
-    document
-      .querySelector(".url-error p")
       .classList.replace("d-none", "d-block");
   }
   if (checkOldNames()) {
@@ -44,6 +39,20 @@ function getBookmarks() {
       .querySelector(".repeat-name-error p")
       .classList.replace("d-block", "d-none");
   }
+});
+bookmarkUrl.addEventListener("blur", function () {
+  if (validateUrl()) {
+    validateU = true;
+    document
+      .querySelector(".url-error p")
+      .classList.replace("d-block", "d-none");
+  } else {
+    validateU = false;
+    document
+      .querySelector(".url-error p")
+      .classList.replace("d-none", "d-block");
+  }
+
   if (checkOldUrl()) {
     checkOldUrlFlag = false;
     document
@@ -55,6 +64,9 @@ function getBookmarks() {
       .querySelector(".repeat-url-error p")
       .classList.replace("d-block", "d-none");
   }
+});
+
+function getBookmarks() {
   if (validateN && validateU && checkOldNamesFlag && checkOldUrlFlag) {
     var Bookmark = {
       bName: bookmarkName.value,
@@ -63,6 +75,7 @@ function getBookmarks() {
     bookmarksList.push(Bookmark);
     displayBookmarks(bookmarksList);
     localStorage.setItem("bookmarksList", JSON.stringify(bookmarksList));
+    clearForm();
   }
 }
 function validateName() {
@@ -109,4 +122,8 @@ function deleteBookmark(productIndex) {
   bookmarksList.splice(productIndex, 1);
   localStorage.setItem("bookmarksList", JSON.stringify(bookmarksList));
   displayBookmarks(bookmarksList);
+}
+function clearForm() {
+  bookmarkName.value = "";
+  bookmarkUrl.value = "";
 }
