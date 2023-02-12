@@ -1,12 +1,10 @@
 var bookmarkName = document.getElementById("bookmarkName");
 var bookmarkUrl = document.getElementById("websiteUrl");
 var bookmarksList = [];
-
 if (localStorage.getItem("bookmarksList") !== null) {
   bookmarksList = JSON.parse(localStorage.getItem("bookmarksList"));
   displayBookmarks(bookmarksList);
 }
-
 document
   .querySelector("#addBookmarkBtn")
   .addEventListener("click", function () {
@@ -86,10 +84,8 @@ function checkOldUrl() {
     return bookmarksList[i].bUrl == bookmarkUrl.value;
   }
 }
-
 function displayBookmarks(bookmarkArray) {
   var bookmarkContainer = ` `;
-
   for (var i = 0; i < bookmarkArray.length; i++) {
     bookmarkContainer += `
       <tr>
