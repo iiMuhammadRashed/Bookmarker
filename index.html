@@ -1,0 +1,101 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week8</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="bookMarkAddBox mx-auto text-center my-5 py-5">
+        <h1 class="p-4 shadow rounded d-inline-block">
+          Websites Bookmarker
+          <span class="mx-2"><i class="fa-duotone fa-bookmark"></i></span>
+        </h1>
+        <div class="bookMarkInputs shadow rounded w-75 mx-auto my-4 py-3">
+          <div class="formgroup p-3">
+            <div class="form_caption text-center">
+              <h2 class="p-3">Bookmark Your Sites Here</h2>
+            </div>
+            <div class="form_inputs m-3 p-2">
+              <div class="form-floating my-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bookmarkName"
+                  placeholder="Your Fav Site Name Here"
+                />
+                <label for="bookmarkName">Bookmark Name</label>
+                <div class="name-error">
+                  <p class="text-danger text-start mx-1 d-none">
+                    <span class="mx-1"
+                      ><i class="fa-light fa-circle-exclamation"></i
+                    ></span>
+                    Invalid Website name
+                  </p>
+                </div>
+                <div class="repeat-name-error">
+                  <p class="text-danger text-start mx-1 d-none">
+                    <span class="mx-1"
+                      ><i class="fa-light fa-circle-exclamation"></i
+                    ></span>
+                    You are using this name already.
+                  </p>
+                </div>
+              </div>
+              <div class="form-floating my-3">
+                <input
+                  type="url"
+                  class="form-control"
+                  id="websiteUrl"
+                  placeholder="Website Url"
+                />
+                <label for="websiteUrl">Website Url</label>
+                <div class="url-error">
+                  <p class="text-danger text-start mx-1 d-none">
+                    <span class="mx-1"
+                      ><i class="fa-light fa-circle-exclamation"></i
+                    ></span>
+                    Invalid Website URL
+                  </p>
+                </div>
+                <div class="repeat-url-error">
+                  <p class="text-danger text-start mx-1 d-none">
+                    <span class="mx-1"
+                      ><i class="fa-light fa-circle-exclamation"></i
+                    ></span>
+                    You are using this URl already.
+                  </p>
+                </div>
+              </div>
+              <button
+                class="btn btn-dark my-2 form-control d-block"
+                id="addBookmarkBtn"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bookmar-table text-center w-100">
+        <h2>Your Bookmarks</h2>
+        <table
+          class="table table-responsive-md table-dark table-striped text-center shadow table-hover"
+        >
+          <thead class="bolder fs-6">
+            <th colspan="8" class="text-start px-5">Website Name</th>
+            <th>Visit</th>
+            <th>Delete</th>
+            <img src="" alt="">
+          </thead>
+          <tbody class="table-group-divider" id="bookmarksTable"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
